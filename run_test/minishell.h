@@ -6,6 +6,7 @@
 /*   By: skim <skim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:40:27 by skim              #+#    #+#             */
+<<<<<<< HEAD
 <<<<<<< HEAD:main/minishell.h
 <<<<<<< HEAD
 /*   Updated: 2021/04/11 21:23:12 by skim             ###   ########.fr       */
@@ -15,6 +16,9 @@
 =======
 /*   Updated: 2021/04/17 21:40:40 by skim             ###   ########.fr       */
 >>>>>>> 255f2ae (run 해보자):run_test/minishell.h
+=======
+/*   Updated: 2021/04/18 15:25:29 by skim             ###   ########.fr       */
+>>>>>>> e652963 (run 된다아ㅏ)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +32,7 @@
 # include <limits.h>
 # include <errno.h>
 
-# define BLT_NUM 2
+# define BLT_NUM 4
 
 # define TYPE_NONE	-1
 # define TYPE_NONE	-1
@@ -67,6 +71,9 @@ int		run(char **run_com, char **en, char *av);
 
 int		cmd_exit(char **run_com, char **en, char *name);
 int		cmd_env(char **run_com, char **en, char *av);
+int		cmd_cd(char **run_com, char **en, char *av);
+int		cmd_pwd(char **run_cum, char **en, char *av);
 char	*find_env(char *key, char **en);
+char	*find_env_val(char *key, char **en);
 
 #endif
