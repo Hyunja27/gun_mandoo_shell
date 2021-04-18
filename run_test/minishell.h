@@ -3,9 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skim <skim@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: spark <spark@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:40:27 by skim              #+#    #+#             */
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD:main/minishell.h
 <<<<<<< HEAD
@@ -19,6 +20,9 @@
 =======
 /*   Updated: 2021/04/18 15:25:29 by skim             ###   ########.fr       */
 >>>>>>> e652963 (run 된다아ㅏ)
+=======
+/*   Updated: 2021/04/18 16:33:48 by spark            ###   ########.fr       */
+>>>>>>> 22da05c (4/18_listmaker&listprinter&ready_run make)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +37,8 @@
 # include <errno.h>
 
 # define BLT_NUM 4
+# define SEP " \t\n\r\a\""
+
 
 # define TYPE_NONE	-1
 # define TYPE_NONE	-1
@@ -75,5 +81,7 @@ int		cmd_cd(char **run_com, char **en, char *av);
 int		cmd_pwd(char **run_cum, char **en, char *av);
 char	*find_env(char *key, char **en);
 char	*find_env_val(char *key, char **en);
+void	ready_run(t_nd *coms);
+t_nd	*new_nd(char *name);
 
 #endif
