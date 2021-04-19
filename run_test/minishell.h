@@ -3,9 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spark <spark@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: skim <skim@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:40:27 by skim              #+#    #+#             */
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -27,6 +28,9 @@
 =======
 /*   Updated: 2021/04/18 21:38:06 by spark            ###   ########.fr       */
 >>>>>>> 172e5fc (run_test update)
+=======
+/*   Updated: 2021/04/19 14:28:14 by skim             ###   ########.fr       */
+>>>>>>> 8f31bb7 (access 수정)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +43,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <errno.h>
+# include <sys/stat.h>
 
 # define BLT_NUM 4
 # define SEP " \t\n\r\a\""
