@@ -7,6 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 19:40:27 by skim              #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:run_test/minishell.h
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -39,6 +40,9 @@
 =======
 /*   Updated: 2021/04/20 14:38:50 by spark            ###   ########.fr       */
 >>>>>>> af70d2d (4/20_env_changer_test_made)
+=======
+/*   Updated: 2021/04/19 22:24:11 by skim             ###   ########.fr       */
+>>>>>>> 60ba770 (update)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +100,10 @@ typedef struct 	s_nd
 int		start_shell(char **en, char *av);
 
 t_nd	*make_big_tok(char *str);
+<<<<<<< HEAD
+=======
+char	**split_qoute(char *str, char c);
+>>>>>>> 60ba770 (update)
 char	**make_tok(char *str, char *charset);
 char	**split_qoute(char *str, char *set);
 int		lexer(t_nd *new, char *args);
