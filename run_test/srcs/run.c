@@ -46,7 +46,7 @@ int		execute_ps(char *run_com, t_nd *com, char **en, char *name)
 			// signal(SIGQUIT, (void*)signal_child_ctlslash);
 		if (com->type == TYPE_C_P || (com->prev && com->prev->type == TYPE_C_P))
 			pipe_dup(com);
-		else
+		if (com->type != TYPE_C_P)
 		{
 			if (com->re.rdrt_type > 0)
 				dup2(com->re.rdrt_fd, STDOUT);
@@ -130,6 +130,8 @@ int	(*blt_func(int i))(t_nd *cmd, char **en, char *av)
 int		builtin_run(t_nd *cmd, char **en, char *av, int i)
 {
 	int 	rt;
+	int		cpy_out;
+	int		cpy_in;
 	pid_t	pid;
 
 	if (cmd->type == TYPE_C_P || (cmd->prev && cmd->prev->type == TYPE_C_P))
@@ -160,10 +162,26 @@ int		builtin_run(t_nd *cmd, char **en, char *av, int i)
 	else
 	{
 		if (cmd->re.rdrt_type > 0)
+		{
+			cpy_out = dup(STDOUT);
 			dup2(cmd->re.rdrt_fd, STDOUT);
+		}
 		if (cmd->re.rdrt_in_type > 0)
+		{
+			cpy_in = dup(STDIN);
 			dup2(cmd->re.rdrt_in_fd, STDIN);
+		}
 		rt = (*blt_func(i))(cmd, en, av);
+		if (cmd->re.rdrt_type > 0)
+		{
+			dup2(cpy_out, STDOUT);
+			close(cpy_out);
+		}
+		if (cmd->re.rdrt_in_type > 0)
+		{
+			dup2(cpy_out, STDIN);
+			close(cpy_in);
+		}
 	}
 	return (rt);
 }
@@ -199,13 +217,15 @@ int		run(t_nd *cmd, char **en, char *av)
 	rt = EXIT_SUCCESS;
 	while (cmd && rt == EXIT_SUCCESS)
 	{
-		rt = run_div(cmd, en, av);
+		if (cmd->args[0])
+			rt = run_div(cmd, en, av);
 		if (cmd->re.rdrt_type > 0)
 			close(cmd->re.rdrt_fd);
 		if (cmd->type != TYPE_C_P && cmd->re.rdrt_in_type > 0)
 			close(cmd->re.rdrt_in_fd);
 		if (cmd->prev && cmd->prev->type == TYPE_C_P && cmd->prev->re.rdrt_in_type > 0)
 			close(cmd->prev->re.rdrt_in_fd);
+<<<<<<< HEAD
 		// if (cmd->prev->re.rdrt_in_type > 0 && cmd->prev->type == TYPE_C_P)
 		// 	close(cmd->prev->re.rdrt_in_fd);
 
@@ -216,6 +236,8 @@ int		run(t_nd *cmd, char **en, char *av)
 		// printf("type : %d\n", cmd->re.rdrt_in_type);
 		// printf("name : %s\n", cmd->re.rdrt_in_name);
 
+=======
+>>>>>>> a978848 (4/26 오늘은 정말 너무 힘들다)
 		if (cmd->sible)
 			cmd = cmd->sible;
 		else
