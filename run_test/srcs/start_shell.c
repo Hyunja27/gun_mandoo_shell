@@ -69,9 +69,9 @@ int		run_cmd(t_nd *coms, char **en, char *av)
 	while (coms)
 	{
 		if(lexer(coms, coms->args[0]) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
+			return (EXIT_SUCCESS);
 		if (tokenizer(coms->child) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
+			return (EXIT_SUCCESS);
 		if (coms->sible)
 			coms = coms->sible;
 		else
@@ -90,8 +90,19 @@ int		run_cmd(t_nd *coms, char **en, char *av)
 	return (rt);
 }
 
+int	line_check(char *line)
+{
+	int i;
 
-int		start_shell(char **en, char *av)
+	i = 0;
+	while (line[i] && ft_strchr(SEP, line[i]))
+		i++;
+	if (!line[i])
+		return (0);
+	return (1);
+}
+
+int	start_shell(char **en, char *av)
 {
 	int		status;
 	char	*line;
@@ -137,8 +148,12 @@ int		start_shell(char **en, char *av)
 		if (ft_strlen(line))
 =======
 		//line = ft_strdup("");
+<<<<<<< HEAD
 		if (synerror_checker(line, ';') >= 0)
 >>>>>>> e9b423a (update)
+=======
+		if (*line && line_check(line) && synerror_checker(line, ';') >= 0)
+>>>>>>> 555c600 (4/27_enter&spaceLine fixed)
 		{
 			coms = big_cutter(line);
 			free(line);

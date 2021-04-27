@@ -50,14 +50,14 @@ int		run(t_nd *cmd, char **en, char *av)
 	rt = EXIT_SUCCESS;
 	while (cmd && rt == EXIT_SUCCESS)
 	{
-		if (cmd->args[0])
-			rt = run_div(cmd, en, av);
+		rt = run_div(cmd, en, av);
 		if (cmd->re.rdrt_type > 0)
 			close(cmd->re.rdrt_fd);
 		if (cmd->type != TYPE_C_P && cmd->re.rdrt_in_type > 0)
 			close(cmd->re.rdrt_in_fd);
 		if (cmd->prev && cmd->prev->type == TYPE_C_P && cmd->prev->re.rdrt_in_type > 0)
 			close(cmd->prev->re.rdrt_in_fd);
+<<<<<<< HEAD
 <<<<<<< HEAD
 		// if (cmd->prev->re.rdrt_in_type > 0 && cmd->prev->type == TYPE_C_P)
 		// 	close(cmd->prev->re.rdrt_in_fd);
@@ -71,6 +71,8 @@ int		run(t_nd *cmd, char **en, char *av)
 
 =======
 >>>>>>> a978848 (4/26 오늘은 정말 너무 힘들다)
+=======
+>>>>>>> 555c600 (4/27_enter&spaceLine fixed)
 		if (cmd->sible)
 			cmd = cmd->sible;
 		else
