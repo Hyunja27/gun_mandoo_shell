@@ -105,12 +105,13 @@ int		start_shell(char **en, char *av)
 	start_write();
 	// i = 0;
 
+	signal(SIGINT, (void*)signal_ctlc);
 	// signal(SIGINT, SIG_IGN);
-	// signal(SIGINT, (void*)signal_ctlc);
 	// signal(SIGTERM, (void*)signal_ctld);
 	// signal(SIGQUIT, (void*)signal_ctlslash);
 	while (status == EXIT_SUCCESS)
 	{
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 		
@@ -118,6 +119,13 @@ int		start_shell(char **en, char *av)
 
 >>>>>>> f3053e4 (함수 정리)
 		write(1, "minishell test>!! ", ft_strlen("minishell test>!! "));
+=======
+		// signal(SIGINT, (void*)signal_ctlc);
+		if (exit_code == 0)
+			write(1, "minishell test> ", ft_strlen("minishell test> "));
+		else
+			exit_code = 0;
+>>>>>>> 926386d (4/27_우리수비니가널가드를 고쳐써요)
 		line = read_line();
 <<<<<<< HEAD
 =======
