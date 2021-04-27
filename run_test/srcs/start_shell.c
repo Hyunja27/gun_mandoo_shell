@@ -119,6 +119,7 @@ int		start_shell(char **en, char *av)
 >>>>>>> f3053e4 (함수 정리)
 		write(1, "minishell test>!! ", ft_strlen("minishell test>!! "));
 		line = read_line();
+<<<<<<< HEAD
 =======
 		write(1, "minishell test> ", ft_strlen("minishell test> "));
 		// line = read_line();
@@ -126,9 +127,11 @@ int		start_shell(char **en, char *av)
 		// printf("line : %s\n", line);
 		//line = ft_strdup("> test | echo 123");
 		if (ft_strlen(line))
+=======
+		//line = ft_strdup("");
+		if (synerror_checker(line, ';') >= 0)
+>>>>>>> e9b423a (update)
 		{
-			if (synerror_checker(line, ';'))
-				return (EXIT_FAILURE);
 			coms = big_cutter(line);
 			free(line);
 			status = run_cmd(coms->child, en, av);
