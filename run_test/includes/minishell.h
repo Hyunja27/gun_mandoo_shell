@@ -108,7 +108,12 @@ typedef struct 	s_nd
 }				t_nd;
 
 int		start_shell(char **en, char *av);
+int		synerror_checker(char *args, char a);
+int		synerror_redirect(char *arg);
+char	**split_quote(char *str, char *set);
+char	**split_redirect(char **b_arg);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 t_nd	*make_big_tok(char *str);
 <<<<<<< HEAD
@@ -120,21 +125,29 @@ char	**split_qoute(char *str, char c);
 char	**make_tok(char *str, char *charset);
 t_nd	*make_big_tok(char *str);
 char	**split_qoute(char *str, char *set);
+=======
+t_nd	*big_cutter(char *str);
+>>>>>>> f3053e4 (함수 정리)
 
 int		lexer(t_nd *new, char *args);
-int		make_mini_tok(t_nd *nd, char **en);
-char	*env_controller(char *args, char **en);
-int		env_changer(char *args, int *arg_i, char *cpy_arg, char **en);
+int		tokenizer(t_nd *nd);
 
+int		token_changer(t_nd *nd, char **en);
 int		get_redirect(t_nd *nd, char **en);
 
-int		call_env(t_nd *nd, char **en);
-int		synerror_checker(char *args, char a);
-int		syntax_check(t_nd *nd);
 
-void	ready_run(t_nd *coms);
 int		run(t_nd *cmd, char **en, char *av);
+int		pipe_dup(t_nd *cmd);
+void	pipe_close(t_nd *cmd);
 
+int		builtin_run(t_nd *cmd, char **en, char *av, int i);
+int		(*blt_func(int i))(t_nd *cmd, char **en, char *av);
+char	*blt_str(int i);
+
+void	find_cmd(t_nd *com, char **en, char *av);
+int		execute_ps(char *run_com, t_nd *com, char **en, char *name);
+
+// built_in
 int		cmd_exit(t_nd *com, char **en, char *name);
 int		cmd_env(t_nd *com, char **en, char *av);
 int		cmd_cd(t_nd *com, char **en, char *av);
@@ -142,12 +155,13 @@ int		cmd_pwd(t_nd *com, char **en, char *av);
 char	*find_env(char *key, char **en);
 char	*find_env_val(char *key, char **en);
 
+// util
 t_nd	*new_nd(char *name);
+t_nd	*child_rewind(t_nd *coms);
 void	print_list(t_nd *com);
 int		matrix_line_num(char **matrix);
 
-t_nd	*child_rewind(t_nd *coms);
-
+// signal
 void	*signal_ctlc(int	signo);
 void	*signal_ctld(int	signo);
 void	*signal_ctlslash(int	signo);
