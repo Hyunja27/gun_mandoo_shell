@@ -108,7 +108,6 @@ void	delete_char(int size)
 	int 	i;
 
 	i = -1;
-	printf("%d\n", size);
 	while (++i < size)
 		alt[i] = '\b';
 	while (i < size * 2)
@@ -117,17 +116,16 @@ void	delete_char(int size)
 	write(1, alt, size);
 }
 
-char	*get_ch(t_hist	**nd)
+char	*get_ch(t_hist	*nd)
 {
 	char	c[2];
 	char	*tmp;
 	struct termios term;
 	struct termios back;
-	t_hist	*tmp_his;
+	t_hist	*anc;
 
 
 	c[1] = 0;
-
 	tcgetattr(STDIN_FILENO, &term);
 	tcgetattr(STDIN_FILENO, &back);
 	term.c_lflag &= ~ICANON;    
@@ -135,6 +133,7 @@ char	*get_ch(t_hist	**nd)
 	term.c_cc[VMIN] = 1; 
 	term.c_cc[VTIME] = 0;
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
+	anc = nd;
 	while (read(0, c, 1) > 0)
 	{
 		if ((int)c[0] == 27)
@@ -145,12 +144,23 @@ char	*get_ch(t_hist	**nd)
 				read(0, c, 1);
 				if ((int)c[0] == 65)
 				{
-					if ((*nd)->content)
-						delete_char(ft_strlen((*nd)->content));
-					if ((*nd)->prev)
+					if (nd->prev && nd->content)
+						delete_char(ft_strlen(nd->content));
+					if (nd->prev)
 					{
-						write(1, (*nd)->prev->content, ft_strlen((*nd)->prev->content));
-						(*nd) = (*nd)->prev;	
+						write(1, nd->prev->content, ft_strlen(nd->prev->content));
+						nd = nd->prev;	
+					}
+				}
+				else if ((int)c[0] == 66)
+				{
+					if (nd != anc && nd->content)
+						delete_char(ft_strlen(nd->content));
+					if (nd != anc)
+					{
+						if (nd->next->content)
+							write(1, nd->next->content, ft_strlen(nd->next->content));
+						nd = nd->next;	
 					}
 				}
 			}
@@ -158,29 +168,27 @@ char	*get_ch(t_hist	**nd)
 		else
 		{
 			write(1, c, 1);
+			if (anc != nd)
+			{
+				free(anc->content);
+				anc->content = ft_strdup(nd->content);
+				nd = anc;
+			}
 			if (c[0] == '\n')
 				break ;
-			if (!(*nd)->content)
-				(*nd)->content = ft_strdup(c);
+			if (!nd->content)
+				nd->content = ft_strdup(c);
 			else
 			{
 				c[1] = 0;
-				tmp = (*nd)->content;
-				(*nd)->content = ft_strjoin(tmp, c);
+				tmp = nd->content;
+				nd->content = ft_strjoin(tmp, c);
 				free(tmp);
 			}
-			// delete_char(nd, ft_strlen(nd->content));
-			// write(1, nd->content, ft_strlen(nd->content));
 		}
-		// delete_char(nd, ft_strlen(nd->content));
-		// write(1, nd->content, ft_strlen(nd->content));
-		//printf("\n[[%s]]\n", nd->content);
 	}
 	tcsetattr(STDIN_FILENO, TCSANOW, &back);
-	// printf("\n\n\n\n");
-	// print_list_2(nd);
-	// printf("\n[[%s]]\n", nd->content);
-	return ((*nd)->content);
+	return (nd->content);
 }
 
 int	start_shell(char **en, char *av)
@@ -192,7 +200,6 @@ int	start_shell(char **en, char *av)
 
 	status = EXIT_SUCCESS;
 	start_write();
-	// history = history_init();
 	history = 0;
 	signal(SIGINT, (void*)signal_ctlc);
 	signal(SIGTERM, SIG_IGN);
@@ -219,6 +226,7 @@ int	start_shell(char **en, char *av)
 			write(1, "minishell test> ", ft_strlen("minishell test> "));
 =======
 		if (exit_code == 0 || exit_code == 1)
+<<<<<<< HEAD
 			write(1, "minishell test>  ", ft_strlen("minishell test>  "));
 >>>>>>> 3be0bdf (4/28_정리사항 반영)
 		else
@@ -253,9 +261,13 @@ int	start_shell(char **en, char *av)
 		// history->next = history_init();
 		// history->next->prev = history;
 		// line = get_ch(history->next);
+=======
+			write(1, "minishell test> ", ft_strlen("minishell test> "));
+		else
+			exit_code = 0;
+>>>>>>> b43bfb0 (4/28_히스토리 제작중! 이제 조금만 더 하면 완성...!!)
 		history = history_add(history);
-		// printf("\n[[%p]]\n", history);
-		line = get_ch(&history);
+		line = get_ch(history);
 		
 >>>>>>> edb8026 (4/28_히스토리 제작중! 거의 다 된거같은데....)
 		if (*line && line_check(line) && synerror_checker(line, ';') >= 0)
@@ -266,12 +278,17 @@ int	start_shell(char **en, char *av)
 		}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		// printf("status : %d\n", status);
 =======
 >>>>>>> a978848 (4/26 오늘은 정말 너무 힘들다)
 =======
 		// history = history->next;
 >>>>>>> edb8026 (4/28_히스토리 제작중! 거의 다 된거같은데....)
+=======
+		// coms free
+>>>>>>> b43bfb0 (4/28_히스토리 제작중! 이제 조금만 더 하면 완성...!!)
 	}
+	// history free
 	return (0);
 }
