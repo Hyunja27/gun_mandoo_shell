@@ -127,6 +127,7 @@ int	start_shell(char **en, char *av)
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		
 =======
 
@@ -142,6 +143,9 @@ int	start_shell(char **en, char *av)
 =======
 		printf("\nexit code is %d!\n\n",exit_code);
 >>>>>>> d8f4813 (4/29_EXIT_code&builtin_FIXING)
+=======
+		// printf("\nexit code is %d!\n\n",exit_code);
+>>>>>>> df2534f (4/30_EXIT_CODE_Silyu.....)
 		if (exit_code == 0 || exit_code == 1)
 <<<<<<< HEAD
 			write(1, "minishell test>  ", ft_strlen("minishell test>  "));
