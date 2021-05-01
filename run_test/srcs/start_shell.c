@@ -145,6 +145,7 @@ int	start_shell(char ***en, char *av)
 >>>>>>> d8f4813 (4/29_EXIT_code&builtin_FIXING)
 =======
 		// printf("\nexit code is %d!\n\n",exit_code);
+<<<<<<< HEAD
 >>>>>>> df2534f (4/30_EXIT_CODE_Silyu.....)
 		if (exit_code == 0 || exit_code == 1)
 <<<<<<< HEAD
@@ -189,6 +190,10 @@ int	start_shell(char ***en, char *av)
 <<<<<<< HEAD
 >>>>>>> b43bfb0 (4/28_히스토리 제작중! 이제 조금만 더 하면 완성...!!)
 =======
+=======
+		if (exit_code != 130 && exit_code != 131)
+			write(1, "minishell test> ", ft_strlen("minishell test> "));
+>>>>>>> 911ac03 (5/02_exit_code&signal_almost_done....?)
 
 >>>>>>> 7b10f7c (5/01_builtin_export&unset_build)
 		history = history_add(history);
