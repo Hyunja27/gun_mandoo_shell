@@ -57,7 +57,7 @@ char	*read_line(void)
 	return (line);
 }
 
-int		run_cmd(t_nd *coms, char **en, char *av)
+int		run_cmd(t_nd *coms, char ***en, char *av)
 {
 	t_nd	*anc;
 	int		rt;
@@ -80,7 +80,7 @@ int		run_cmd(t_nd *coms, char **en, char *av)
 	while (anc && rt == EXIT_SUCCESS)
 	{
 		token_changer(anc->child, en);
-		get_redirect(anc->child, en);
+		get_redirect(anc->child, *en);
 		rt = run(anc->child, en, av);
 		if (anc->sible)
 			anc = anc->sible;
@@ -104,7 +104,7 @@ int	line_check(char *line)
 
 
 
-int	start_shell(char **en, char *av)
+int	start_shell(char ***en, char *av)
 {
 	int		status;
 	char	*line;
@@ -186,7 +186,11 @@ int	start_shell(char **en, char *av)
 			write(1, "minishell test> ", ft_strlen("minishell test> "));
 		else
 			exit_code = 0;
+<<<<<<< HEAD
 >>>>>>> b43bfb0 (4/28_히스토리 제작중! 이제 조금만 더 하면 완성...!!)
+=======
+
+>>>>>>> 7b10f7c (5/01_builtin_export&unset_build)
 		history = history_add(history);
 		line = get_ch(history);
 <<<<<<< HEAD
@@ -209,7 +213,8 @@ int	start_shell(char **en, char *av)
 				history = 0;
 			}
 		}
-		// line = ft_strdup("ls >test");
+
+		// line = ft_strdup("echo $PAGER");
 		if (line && *line && line_check(line) && synerror_checker(line, ';') >= 0)
 >>>>>>> d8f4813 (4/29_EXIT_code&builtin_FIXING)
 		{
@@ -230,5 +235,6 @@ int	start_shell(char **en, char *av)
 >>>>>>> b43bfb0 (4/28_히스토리 제작중! 이제 조금만 더 하면 완성...!!)
 	}
 	// history free
+	// cmd_unset(&en, )
 	return (0);
 }
