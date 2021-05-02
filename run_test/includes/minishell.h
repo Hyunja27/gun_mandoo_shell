@@ -177,6 +177,7 @@ char	*find_env(char *key, char **en);
 char	*find_env_val(char *key, char **en);
 char	**add_env(char ***en, char *str);
 char	**update_env(char ***en, char *str, char *find_en);
+char	**delete_env(char ***en, char *find_en);
 
 // util
 t_nd	*new_nd(char *name);
@@ -189,7 +190,6 @@ void	*signal_ctlc(int signo);
 void	*signal_ctld(int signo);
 void	*signal_ctlslash(int signo);
 t_hist	*history_add(t_hist *nd);
-t_hist	*history_init();
 
 void	print_list_2(t_hist *com);
 
