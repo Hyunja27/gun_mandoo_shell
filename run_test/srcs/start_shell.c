@@ -45,7 +45,6 @@ void	start_write(void)
 	printf("▒▒▒▒__▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓▒▓\n");
 	printf("▒▒▒__▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓\n");
 	printf("▒▒\n");
-
 }
 
 char	*read_line(void)
@@ -57,7 +56,7 @@ char	*read_line(void)
 	return (line);
 }
 
-int		run_cmd(t_nd *coms, char ***en, char *av)
+int	run_cmd(t_nd *coms, char ***en, char *av)
 {
 	t_nd	*anc;
 	int		rt;
@@ -68,7 +67,7 @@ int		run_cmd(t_nd *coms, char ***en, char *av)
 	anc = coms;
 	while (coms)
 	{
-		if(lexer(coms, coms->args[0]) == EXIT_FAILURE)
+		if (lexer(coms, coms->args[0]) == EXIT_FAILURE)
 			return (EXIT_SUCCESS);
 		if (tokenizer(coms->child) == EXIT_FAILURE)
 			return (EXIT_SUCCESS);
@@ -92,7 +91,7 @@ int		run_cmd(t_nd *coms, char ***en, char *av)
 
 int	line_check(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i] && ft_strchr(SEP, line[i]))
@@ -101,8 +100,6 @@ int	line_check(char *line)
 		return (0);
 	return (1);
 }
-
-
 
 int	start_shell(char ***en, char *av)
 {
@@ -115,11 +112,11 @@ int	start_shell(char ***en, char *av)
 	status = EXIT_SUCCESS;
 	start_write();
 	history = 0;
-	signal(SIGINT, (void*)signal_ctlc);
-	signal(SIGTERM, SIG_IGN);
-	signal(SIGQUIT, (void*)signal_ctlslash);
+	signal(SIGINT, (void *)signal_ctlc);
+	signal(SIGQUIT, (void *)signal_ctlslash);
 	while (status == EXIT_SUCCESS)
 	{
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -204,6 +201,10 @@ int	start_shell(char ***en, char *av)
 >>>>>>> 35be605 (5/03_signal을 거의 끝내간다!!)
 
 >>>>>>> 7b10f7c (5/01_builtin_export&unset_build)
+=======
+		if (g_ex.pid == 0)
+			write(1, "minishell test> ", ft_strlen("minishell test> "));
+>>>>>>> f0fec41 (05/02 signal 처리)
 		history = history_add(history);
 		line = get_ch(history);
 <<<<<<< HEAD
@@ -226,8 +227,6 @@ int	start_shell(char ***en, char *av)
 				history = 0;
 			}
 		}
-
-		// line = ft_strdup("echo $PAGER");
 		if (line && *line && line_check(line) && synerror_checker(line, ';') >= 0)
 >>>>>>> d8f4813 (4/29_EXIT_code&builtin_FIXING)
 		{
