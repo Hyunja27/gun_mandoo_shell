@@ -110,6 +110,7 @@ int	start_shell(char ***en, char *av)
 	char	*line;
 	t_nd	*coms;
 	t_hist	*history;
+	int		tmp_exitcode;
 
 	status = EXIT_SUCCESS;
 	start_write();
@@ -117,8 +118,6 @@ int	start_shell(char ***en, char *av)
 	signal(SIGINT, (void*)signal_ctlc);
 	signal(SIGTERM, SIG_IGN);
 	signal(SIGQUIT, (void*)signal_ctlslash);
-
-	
 	while (status == EXIT_SUCCESS)
 	{
 <<<<<<< HEAD
@@ -145,6 +144,7 @@ int	start_shell(char ***en, char *av)
 >>>>>>> d8f4813 (4/29_EXIT_code&builtin_FIXING)
 =======
 		// printf("\nexit code is %d!\n\n",exit_code);
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> df2534f (4/30_EXIT_CODE_Silyu.....)
 		if (exit_code == 0 || exit_code == 1)
@@ -194,6 +194,14 @@ int	start_shell(char ***en, char *av)
 		if (exit_code != 130 && exit_code != 131)
 			write(1, "minishell test> ", ft_strlen("minishell test> "));
 >>>>>>> 911ac03 (5/02_exit_code&signal_almost_done....?)
+=======
+		// if ((ex.exit_code != 130 && exit_code != 131))
+		g_ex.is_signaled = 0;
+		if (g_ex.pid == 0)
+			write(1, "minishell test(start)> ", ft_strlen("minishell test(start)> "));
+
+		//ex.is_signaled = 0;
+>>>>>>> 35be605 (5/03_signal을 거의 끝내간다!!)
 
 >>>>>>> 7b10f7c (5/01_builtin_export&unset_build)
 		history = history_add(history);
@@ -229,6 +237,7 @@ int	start_shell(char ***en, char *av)
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		// printf("status : %d\n", status);
 =======
 >>>>>>> a978848 (4/26 오늘은 정말 너무 힘들다)
@@ -236,6 +245,9 @@ int	start_shell(char ***en, char *av)
 		// history = history->next;
 >>>>>>> edb8026 (4/28_히스토리 제작중! 거의 다 된거같은데....)
 =======
+=======
+		g_ex.pid = 0;
+>>>>>>> 35be605 (5/03_signal을 거의 끝내간다!!)
 		// coms free
 >>>>>>> b43bfb0 (4/28_히스토리 제작중! 이제 조금만 더 하면 완성...!!)
 	}
