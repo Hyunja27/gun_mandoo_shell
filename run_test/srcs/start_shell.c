@@ -250,7 +250,5 @@ int	start_shell(char ***en, char *av)
 		// coms free
 >>>>>>> b43bfb0 (4/28_히스토리 제작중! 이제 조금만 더 하면 완성...!!)
 	}
-	// history free
-	// cmd_unset(&en, )
 	return (0);
 }
