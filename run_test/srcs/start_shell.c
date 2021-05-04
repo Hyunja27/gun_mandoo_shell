@@ -227,11 +227,13 @@ int	start_shell(char ***en, char *av)
 				history = 0;
 			}
 		}
+		// line = ft_strdup("ls");
 		if (line && *line && line_check(line) && synerror_checker(line, ';') >= 0)
 >>>>>>> d8f4813 (4/29_EXIT_code&builtin_FIXING)
 		{
 			coms = big_cutter(line);
 			status = run_cmd(coms->child, en, av);
+			free_nd(coms);
 		}
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -246,9 +248,13 @@ int	start_shell(char ***en, char *av)
 =======
 =======
 		g_ex.pid = 0;
+<<<<<<< HEAD
 >>>>>>> 35be605 (5/03_signal을 거의 끝내간다!!)
 		// coms free
 >>>>>>> b43bfb0 (4/28_히스토리 제작중! 이제 조금만 더 하면 완성...!!)
+=======
+>>>>>>> 25c7956 (5/04_free_logic_making)
 	}
+	// free_hist(coms);
 	return (0);
 }
