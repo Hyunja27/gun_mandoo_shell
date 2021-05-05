@@ -203,8 +203,12 @@ int	start_shell(char ***en, char *av)
 >>>>>>> 7b10f7c (5/01_builtin_export&unset_build)
 =======
 		if (g_ex.pid == 0)
+<<<<<<< HEAD
 			write(1, "minishell test> ", ft_strlen("minishell test> "));
 >>>>>>> f0fec41 (05/02 signal 처리)
+=======
+			write(1, "gun_mandoo_shell > ", ft_strlen("gun_mandoo_shell > "));
+>>>>>>> 4cc717f (05/05 오늘 저녁은 머먹지?)
 		history = history_add(history);
 		line = get_ch(history);
 <<<<<<< HEAD
