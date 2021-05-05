@@ -256,6 +256,6 @@ int	start_shell(char ***en, char *av)
 =======
 >>>>>>> 25c7956 (5/04_free_logic_making)
 	}
-	// free_hist(coms);
+	free_hist(history);
 	return (0);
 }
