@@ -20,7 +20,7 @@
 #include "minishell.h"
 =======
 /*   Created: 2021/05/05 22:34:06 by spark             #+#    #+#             */
-/*   Updated: 2021/05/06 16:07:40 by spark            ###   ########.fr       */
+/*   Updated: 2021/05/06 17:04:03 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 >>>>>>> b466bd3 (05/06_get_ch_nome...left..)
@@ -70,7 +70,6 @@ int		start_shell(char ***en, char *av)
 	char	*line;
 	t_nd	*coms;
 	t_hist	*history;
-	int		tmp_exitcode;
 
 	status = EXIT_SUCCESS;
 	start_write();
