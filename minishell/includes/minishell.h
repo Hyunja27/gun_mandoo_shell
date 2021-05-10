@@ -55,7 +55,7 @@
 >>>>>>> c03ce33 (delete header)
 =======
 /*   Created: 2021/05/06 16:09:19 by spark             #+#    #+#             */
-/*   Updated: 2021/05/10 12:10:11 by spark            ###   ########.fr       */
+/*   Updated: 2021/05/10 13:07:29 by spark            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,6 +291,10 @@ void			cmd_cd_error(t_nd *com, int rt);
 >>>>>>> e783e2d (제출직전):minishell/includes/minishell.h
 =======
 void			execute_satus(void);
+<<<<<<< HEAD
 >>>>>>> 119fdbf (05/10_second_try)
+=======
+void			make_dup(int *fd, int type);
+>>>>>>> 69ec66b (05/10_second_try)
 
 #endif
